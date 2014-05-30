@@ -23,14 +23,14 @@ By default, the class structure looks like
 you can do `pad` or `marg`
 
 ####css types
-* margin ( default: marg )
-* padding ( default: pad )
+* `margin` ( default namespace: `marg` )
+* `padding` ( default namespace: `pad` )
 
 ####screen sizes
-* xs ( no minimum )
-* sm ( min-width 768 )
-* md ( min-width 992 )
-* lg ( min-width 1200 )
+* `xs` ( no minimum )
+* `sm` ( min-width 768 )
+* `md` ( min-width 992 )
+* `lg` ( min-width 1200 )
 
 #### directions
 * [none] `pad-lg-7` does `padding: 7px`
