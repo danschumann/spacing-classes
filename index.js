@@ -38,9 +38,9 @@ function make (type, cssType, inverse) {
   })
 }
 
-make('sp-in', 'padding')
-make('sp-out', 'margin')
-make('sp-out', 'margin', true)
+make('pad', 'padding')
+make('marg', 'margin')
+make('marg', 'margin', true)
 
 stylus.render(styl, function(err, css) {
   console.log(err, css);
