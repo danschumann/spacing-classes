@@ -39,9 +39,16 @@ make('sp-in', 'padding')
 make('sp-out', 'margin')
 make('sp-out', 'margin', true)
 
-stylus(styl).render(function(err, css) {
+stylus.render(styl, function(err, css) {
   console.log(err, css);
 
   fs.writeFile(join(__dirname, 'output.css'), css);
+  
+})
+
+stylus.render(styl, {compress: true}, function(err, css) {
+  console.log(err, css);
+
+  fs.writeFile(join(__dirname, 'output.min.css'), css);
   
 })
