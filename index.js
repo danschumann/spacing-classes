@@ -6,7 +6,7 @@ var
   styl        = '',
   indent      = '',
   _           = require('underscore'),
-  directions  = [ 'top', 'left', 'right', 'down' ],
+  directions  = [ 'top', 'left', 'right', 'bottom', '' ],
   sizes       = [ 3, 7, 15, 22, 30 ];
 
 function make (type, cssType, inverse) {
@@ -24,10 +24,13 @@ function make (type, cssType, inverse) {
       indent = '';
     };
 
+
     _.each(sizes, function(pixels) {
       _.each(directions, function(dir) {
-        styl += '\n' + indent + '.' + type + '-' + screenSize + '-' + dir + '-' + pixels + (inverse ? '-inv' : '');
-        styl += '\n  ' + indent + cssType + '-' + dir + ': ' + (inverse ? '-' : '') + pixels + 'px';
+        if (dir)
+          dir = '-' + dir;
+        styl += '\n' + indent + '.' + type + '-' + screenSize + dir + '-' + pixels + (inverse ? '-inv' : '');
+        styl += '\n  ' + indent + cssType + dir + ': ' + (inverse ? '-' : '') + pixels + 'px';
       });
 
     });
