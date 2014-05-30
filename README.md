@@ -48,6 +48,6 @@ you can do `pad` or `marg`
 * 30
 
 #### inverse (optional)
-add `-inv` to the end of a margin class to get negative amounts
+add `-inv` to the end of a margin class to get __negative__ amounts
 
 `marg-xs-top-3-inv` will do `padding-top: -3px`
