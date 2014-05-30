@@ -33,7 +33,7 @@ you can do `pad` or `marg`
 * `lg` ( min-width 1200 )
 
 #### directions
-* [none] `pad-lg-7` does `padding: 7px`
+* [none] (`pad-lg-7` does `padding: 7px`)
 * `top`
 * `left`
 * `right`
