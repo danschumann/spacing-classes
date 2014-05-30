@@ -11,7 +11,14 @@ This provides a `.js` file that generates some css.
 
 By default, the class structure looks like 
 
-`pad-md-bottom-7`
+@media (min-width: 992px) {
+  .pad-md-top-3 {
+    padding-top: 3px;
+  }
+  
+  // AND MANY MORE
+
+}
 
 you can do `pad` or `marg`
 
