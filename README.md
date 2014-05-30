@@ -49,4 +49,5 @@ you can do `pad` or `marg`
 
 #### inverse (optional)
 add `-inv` to the end of a margin class to get negative amounts
-you can do `marg-xs-top-3-inv` to do `-3px` and bump something up
+
+`marg-xs-top-3-inv` will do `-3px` to bump something up
