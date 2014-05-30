@@ -4,7 +4,7 @@ var
   fs          = require('fs'),
   stylus      = require('stylus'),
   styl        = '',
-  indent      = 0,
+  indent      = '',
   _           = require('underscore'),
   directions  = [ 'top', 'left', 'right', 'down' ],
   sizes       = [ 3, 7, 15, 22, 30 ];
@@ -19,12 +19,15 @@ function make (type, cssType, inverse) {
 
     if (minWidth) {
       styl += '\n@media (min-width: ' + minWidth + 'px)';
+      indent = '  ';
+    } else {
+      indent = '';
     };
 
     _.each(sizes, function(pixels) {
       _.each(directions, function(dir) {
-        styl += '\n  .' + type + '-' + screenSize + '-' + dir + '-' + pixels + (inverse ? '-inv' : '');
-        styl += '\n    ' + cssType + '-' + dir + ': ' + (inverse ? '-' : '') + pixels + 'px';
+        styl += '\n' + indent + '.' + type + '-' + screenSize + '-' + dir + '-' + pixels + (inverse ? '-inv' : '');
+        styl += '\n  ' + indent + cssType + '-' + dir + ': ' + (inverse ? '-' : '') + pixels + 'px';
       });
 
     });
