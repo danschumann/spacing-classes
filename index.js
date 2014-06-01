@@ -47,13 +47,13 @@ console.log(styl);
 stylus.render(styl, function(err, css) {
   console.log(err, css);
 
-  fs.writeFile(join(__dirname, 'output.css'), css);
+  fs.writeFile(join(__dirname, 'spacing-classes.css'), css);
   
 })
 
 stylus.render(styl, {compress: true}, function(err, css) {
   console.log(err, css);
 
-  fs.writeFile(join(__dirname, 'output.min.css'), css);
+  fs.writeFile(join(__dirname, 'spacing-classes.min.css'), css);
   
 })
