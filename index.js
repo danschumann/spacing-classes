@@ -3,7 +3,7 @@ var
   join        = require('path').join,
   fs          = require('fs'),
   stylus      = require('stylus'),
-  styl        = '// https://github.com/danschumann/spacing-classes/',
+  styl        = '/*! https://github.com/danschumann/spacing-classes/ */',
   indent      = '',
   _           = require('underscore'),
   directions  = [ 'top', 'left', 'right', 'bottom', '' ],
@@ -41,6 +41,8 @@ function make (type, cssType, inverse) {
 make('pad', 'padding')
 make('marg', 'margin')
 make('marg', 'margin', true)
+
+console.log(styl);
 
 stylus.render(styl, function(err, css) {
   console.log(err, css);
