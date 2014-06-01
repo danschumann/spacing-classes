@@ -3,7 +3,7 @@ var
   join        = require('path').join,
   fs          = require('fs'),
   stylus      = require('stylus'),
-  styl        = '',
+  styl        = '// https://github.com/danschumann/spacing-classes/',
   indent      = '',
   _           = require('underscore'),
   directions  = [ 'top', 'left', 'right', 'bottom', '' ],
