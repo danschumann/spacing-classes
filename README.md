@@ -2,6 +2,23 @@
 
   Stylus mixin, inspired by Bootstrap, to add margin and padding css helper classes.
 
+## Output
+
+
+This module, when imported into a `.styl` file, will create many classes that help in adding padding and margin to non-custom elements.
+
+ ```css
+@media (min-width: 992px) {
+  .pad-md-top-3 {
+    padding-top: 3px;
+  }
+  
+  // AND MANY MORE
+
+}
+```
+
+
 ## Instalation
 
 ```bash
@@ -43,18 +60,6 @@ server.use(stylus.middleware({
   ```
 
 
-By default, the class structure looks like 
-
- ```css
-@media (min-width: 992px) {
-  .pad-md-top-3 {
-    padding-top: 3px;
-  }
-  
-  // AND MANY MORE
-
-}
-```
 
 
 ## Customizing 
