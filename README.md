@@ -2,7 +2,7 @@
 
   Stylus mixin, inspired by Bootstrap, to add margin and padding css helper classes.
 
-## Output
+## What's it do?
 
 
 This module, when imported into a `.styl` file, will create many classes that help in adding padding and margin to non-custom elements.
@@ -13,7 +13,11 @@ This module, when imported into a `.styl` file, will create many classes that he
     padding-top: 3px;
   }
   
-  // AND MANY MORE
+  .pad-md-left-3 {
+    padding-left: 3px;
+  }
+  
+  // ...
 
 }
 ```
