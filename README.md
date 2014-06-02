@@ -41,8 +41,9 @@ spacing classes relies on stylus to work, though included are CSS files that you
 var connect = require('connect')
   , stylus = require('stylus')
   , spacingClasses = require('spacing-classes');
-  
-spacingClasses.compile({sizes: [2, 5, 10, 20]});
+
+// In this case we want fine control of padding/margin classes  
+spacingClasses.compile({sizes: [1, 3, 5, 7]});
 
 var server = connect();
 
