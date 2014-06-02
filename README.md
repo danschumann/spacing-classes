@@ -1,53 +1,100 @@
-spacing-classes
-===============
+#spacing-classes
 
-Bootstrap inspired margin and padding css classes.
+  Stylus mixin, inspired by Bootstrap, to add margin and padding css helper classes.
 
-For times when you don't want a custom class but want to nudge something a little.
+## Instalation
 
-When you need to add 3px here, or negative 3px there, you might not want to create a custom class.
+```bash
+$ npm install spacing-classes
+```
 
-This provides a `.js` file that generates some css.
+## Javascript API
+
+spacing classes relies on stylus to work, though included are CSS files that you can pull directly.
+
+```javascript
+var connect = require('connect')
+  , stylus = require('stylus')
+  , spacingClasses = require('nib');
+  
+spacingClasses.compile({sizes: [2, 5, 10, 20]});
+
+var server = connect();
+
+function compile(str, path) {
+  return stylus(str)
+	.set('filename', path)
+	.set('compress', true)
+	.use(spacingClasses());
+}
+
+server.use(stylus.middleware({
+	src: __dirname
+  , compile: compile
+}));
+```
+
+## Stylus API
+
+  To print the classes in a css file:
+
+  ```css
+  @import 'spacing-classes'
+  ```
+
 
 By default, the class structure looks like 
 
-    @media (min-width: 992px) {
-      .pad-md-top-3 {
-        padding-top: 3px;
-      }
-      
-      // AND MANY MORE
-    
-    }
+ ```css
+@media (min-width: 992px) {
+  .pad-md-top-3 {
+    padding-top: 3px;
+  }
+  
+  // AND MANY MORE
 
-you can do `pad` or `marg`
+}
+```
 
-####css types
-* `margin` ( default namespace: `marg` )
-* `padding` ( default namespace: `pad` )
 
-####screen sizes
-* `xs` ( no minimum )
-* `sm` ( min-width 768 )
-* `md` ( min-width 992 )
-* `lg` ( min-width 1200 )
+## Customizing 
 
-#### directions
-* \[none\] (`pad-xs-7` does `padding: 7px`)
-* `top`
-* `left`
-* `right`
-* `bottom`
+These are the default settings.
 
-####sizes
+Pass one or more of these attributes to `spacingClasses.compile()`.
 
-* 3
-* 7
-* 15
-* 22
-* 30
+The following would be identical to not compiling at all ( as they are the defaults ), or compiling with no options.
 
-#### inverse (optional)
+```javascript
+var settings    = {
+directions: [ 'top', 'left', 'right', 'bottom', '' ],
+sizes:      [ 3, 7, 15, 22, 30 ],
+screens: {
+  xs: null,
+  sm: 768,
+  md: 992,
+  lg: 1200,
+},
+types: [
+  {key: 'pad', cssType: 'padding'},
+  {key: 'marg', cssType: 'margin'},
+  {key: 'marg', cssType: 'margin', inverse: true},
+],
+};
+
+spacingClasses = require('spacing-classes')
+spacingClasses.compile(settings);
+
+```
+
+#### inverse: true (optional)
+
+Note the `inverse: true` on the 3rd type.
+
 add `-inv` to the end of a margin class to get __negative__ amounts
 
-`marg-xs-top-3-inv` will do `padding-top: -3px`
+```css
+marg-xs-top-3-inv {
+  margin-top: -3px
+}
+```
