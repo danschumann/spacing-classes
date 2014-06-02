@@ -7,7 +7,7 @@
 
 Makes adding padding and margins a class based thing in cases where a custom class is overkill.
 
-Basically: __It supplies a bunch of helper classes_
+Basically: __It supplies a bunch of helper classes__
 
 see the [default output](https://github.com/danschumann/spacing-classes/blob/master/spacing-classes.css)
 
