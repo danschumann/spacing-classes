@@ -40,7 +40,7 @@ spacing classes relies on stylus to work, though included are CSS files that you
 ```javascript
 var connect = require('connect')
   , stylus = require('stylus')
-  , spacingClasses = require('nib');
+  , spacingClasses = require('spacing-classes');
   
 spacingClasses.compile({sizes: [2, 5, 10, 20]});
 
