@@ -5,7 +5,9 @@
 ## What's it do?
 
 
-This module, when imported into a `.styl` file, will create many classes that help in adding padding and margin to non-custom elements.
+Makes adding padding and margins a class based thing in cases where a custom class is overkill.
+
+Basically: __It supplies a bunch of helper classes_
 
 see the [default output](https://github.com/danschumann/spacing-classes/blob/master/spacing-classes.css)
 
