@@ -7,6 +7,8 @@
 
 This module, when imported into a `.styl` file, will create many classes that help in adding padding and margin to non-custom elements.
 
+see the [sample output](https://github.com/danschumann/spacing-classes/blob/master/spacing-classes.css)
+
  ```css
 @media (min-width: 992px) {
   .pad-md-top-3 {
