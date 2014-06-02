@@ -27,7 +27,7 @@ see the [default output](https://github.com/danschumann/spacing-classes/blob/mas
 ```
 
 
-## Instalation
+## Installation
 
 ```bash
 $ npm install spacing-classes
