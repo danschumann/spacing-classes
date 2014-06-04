@@ -7,7 +7,7 @@ var
   indent      = '',
   _           = require('underscore');
 
-function make (type, cssType, inverse, settings) {
+function make (type, cssType, inverse, settings, important) {
   _.each(settings.screens, function(minWidth, screenSize) {
 
     if (minWidth) {
@@ -23,7 +23,9 @@ function make (type, cssType, inverse, settings) {
         if (dir)
           dir = '-' + dir;
         styl += '\n' + indent + '.' + type + '-' + screenSize + dir + '-' + pixels + (inverse ? '-inv' : '');
-        styl += '\n  ' + indent + cssType + dir + ': ' + (inverse ? '-' : '') + pixels + 'px';
+        styl += '\n  ' + indent + cssType + dir + ': ' + (inverse ? '-' : '') +
+          pixels + 'px' + (important && '!important' || '');
+
       });
 
     });
@@ -36,6 +38,7 @@ console.log(styl);
 module.exports = function(opts){
 
   var settings    = {
+    important: false,
     directions: [ 'top', 'left', 'right', 'bottom', '' ],
     sizes:      [ 3, 7, 15, 22, 30 ],
     screens: {
@@ -58,7 +61,8 @@ module.exports = function(opts){
   styl = '/*! https://github.com/danschumann/spacing-classes/ */';
   // each time gets appended
   _.each(settings.types, function(t){
-    make(t.key, t.cssType, t.inverse, settings)
+    // type.important overrides settings.important if it is defined
+    make(t.key, t.cssType, t.inverse, settings, t.important || (t.important !== false && settings.important))
   });
 
   fs.writeFileSync(join(__dirname, 'spacing-classes.styl'), styl);
