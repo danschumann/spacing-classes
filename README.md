@@ -81,19 +81,20 @@ The following would be identical to not compiling at all ( as they are the defau
 
 ```javascript
 var settings    = {
-directions: [ 'top', 'left', 'right', 'bottom', '' ],
-sizes:      [ 3, 7, 15, 22, 30 ],
-screens: {
-  xs: null,
-  sm: 768,
-  md: 992,
-  lg: 1200,
-},
-types: [
-  {key: 'pad', cssType: 'padding'},
-  {key: 'marg', cssType: 'margin'},
-  {key: 'marg', cssType: 'margin', inverse: true},
-],
+  important: false,
+  directions: [ 'top', 'left', 'right', 'bottom', '' ],
+  sizes:      [ 3, 7, 15, 22, 30 ],
+  screens: {
+    xs: null,
+    sm: 768,
+    md: 992,
+    lg: 1200,
+  },
+  types: [
+    {key: 'pad', cssType: 'padding'}, // important: true can be added
+    {key: 'marg', cssType: 'margin'}, // type.important overrides the settings.important
+    {key: 'marg', cssType: 'margin', inverse: true},
+  ],
 };
 
 spacingClasses = require('spacing-classes')
