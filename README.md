@@ -42,7 +42,7 @@ var connect = require('connect')
   , stylus = require('stylus')
   , spacingClasses = require('spacing-classes');
 
-// In this case we want fine control of padding/margin classes  
+// In this case we supply our own sizes.  calling .compile() is optional
 spacingClasses.compile({sizes: [1, 3, 5, 7]});
 
 var server = connect();
