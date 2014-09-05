@@ -3,6 +3,8 @@ var
   join        = require('path').join,
   fs          = require('fs'),
   stylus      = require('stylus'),
+  when        = require('when'),
+  nodefn        = require('when/node/function'),
   styl        = '',
   indent      = '',
   _           = require('underscore');
@@ -32,8 +34,6 @@ function make (type, cssType, inverse, settings, important) {
 
   })
 }
-
-console.log(styl);
 
 module.exports = function(opts){
 
@@ -65,14 +65,38 @@ module.exports = function(opts){
     make(t.key, t.cssType, t.inverse, settings, t.important || (t.important !== false && settings.important))
   });
 
-  fs.writeFileSync(join(__dirname, 'spacing-classes.styl'), styl);
+  return nodefn.call(
+    _.bind(fs.writeFile, fs),
+    join(__dirname, 'spacing-classes.styl'),
+    styl
+  ).then(function(){
+     
+    var uncompressed = when.defer();
+    var compressed = when.defer();
 
-  stylus.render(styl, function(err, css) {
-    fs.writeFileSync(join(__dirname, 'spacing-classes.css'), css);
+    stylus.render(styl, function(err, css) {
+      if (err) return uncompressed.reject(err);
+
+      uncompressed.resolve(nodefn.call(
+        _.bind(fs.writeFile, fs),
+        join(__dirname, 'spacing-classes.css'),
+        css
+      ));
+
+    });
+
+    stylus.render(styl, {compress: true}, function(err, css) {
+      if (err) return compressed.reject(err);
+
+      compressed.resolve(nodefn.call(
+        _.bind(fs.writeFile, fs),
+        join(__dirname, 'spacing-classes.min.css'),
+        css
+      ));
+
+    });
+
+    return when.all([uncompressed.promise, compressed.promise]);
   });
 
-  stylus.render(styl, {compress: true}, function(err, css) {
-    fs.writeFileSync(join(__dirname, 'spacing-classes.min.css'), css);
-  });
-
-}
+};
